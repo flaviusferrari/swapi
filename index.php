@@ -8,7 +8,7 @@
     <title>Star Wars Characters</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="./css/fontawesome-free/css/fontawesome.min.css" />
 </head>
 <body >
     <?php
@@ -31,12 +31,16 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($swCharacters->results as $character): ?>
-                    
+                <?php foreach($swCharacters->results as $character): ?>                    
                     <tr>
                         <td><?= $character->name; ?></td>
                         <td><?= $character->gender; ?></td>
-                        <td><?= $sw->getDataResource($character->homeworld, 'planets', 'name'); ?></td>
+                        <td>
+                            <?= $sw->getDataResource($character->homeworld, 'planets', 'name'); ?>
+                            <a href="#" class="viewDetailsHomeworld">
+                                <i class="fas fa-search"></i> Visualizar
+                            </a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -46,6 +50,6 @@
     <!-- SCRIPTS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-
+    <script src="./js/main.js"></script>
 </body>
 </html>
