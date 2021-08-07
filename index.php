@@ -10,6 +10,31 @@
 
 </head>
 <body>
-    
+    <?php
+        include("./class/swapi-class.php");
+
+        $sw = new swapi();
+
+        $sw->resource = 'people';
+
+        $swCharacters = $sw->getDataApi();
+    ?>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Personagem</th>
+                <th>Genero</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($swCharacters->results as $character): ?>
+                
+                <tr>
+                    <td><?= $character->name; ?></td>
+                    <td><?= $character->gender; ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 </body>
 </html>
