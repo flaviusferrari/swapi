@@ -7,7 +7,7 @@ $(document).ready(function() {
             url: "http://localhost/swapi/planet.php",
             type: 'post',
             data: {
-                
+                url: $(this).attr('data-url')
             },
             success: function( data ) {                    
                 $('.modal-body').html(data);                
