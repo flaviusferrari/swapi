@@ -24,6 +24,7 @@
             <tr>
                 <th>Personagem</th>
                 <th>Genero</th>
+                <th>Planeta Natal</th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +33,7 @@
                 <tr>
                     <td><?= $character->name; ?></td>
                     <td><?= $character->gender; ?></td>
+                    <td><?= $sw->getDataResource($character->homeworld, 'planets', 'name'); ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
