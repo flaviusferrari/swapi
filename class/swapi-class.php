@@ -3,6 +3,7 @@
 class swapi
 {
     private $base_url = 'https://swapi.dev/api/';
+    public $resource;
 
     /**
      * MÉTODO GET DATA API
@@ -11,7 +12,7 @@ class swapi
      */
     public function getDataApi()
     {
-        $url = $this->base_url . "planets/1/";
+        $url = $this->base_url . $this->resource;
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
