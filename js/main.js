@@ -17,5 +17,21 @@ $(document).ready(function() {
 
     });
 
+    $('form').submit(function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: "http://localhost/swapi/searchCharacter.php",
+            type: 'post',
+            data: {
+                person: $('#person').val()
+            },
+            success: function( data ) {                    
+                $('.modal-body').html(data);                
+                $('.modal').modal('show');
+            }
+        });
+    })
+
 
 });

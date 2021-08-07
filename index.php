@@ -8,7 +8,7 @@
     <title>Star Wars Characters</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/fontawesome-free/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="./css/fontawesome-free/css/all.min.css" />
 </head>
 <body >
     <?php
@@ -22,6 +22,21 @@
     ?>
     <div class="container">
         <h1>Star Wars Characters</h1>
+        <!-- FORMULÁRIO -->
+        <form>
+            <div class="form-row">
+                <div class="col-3">
+                    <label>Digite o Nome do personagem: </label> 
+                </div>
+                <div class="col-2">
+                    <input type="text" class="form-control" id="person" value="">
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-primary mb-2">Localizar</button>
+                </div>
+            </div>
+        </form>
+
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
@@ -37,8 +52,8 @@
                         <td><?= $character->gender; ?></td>
                         <td>
                             <?= $sw->getDataResource($character->homeworld, 'planets', 'name'); ?>
-                            <a href="#" class="viewDetailsHomeworld" data-url="<?= $character->homeworld; ?>">
-                                <i class="fas fa-search"></i> Visualizar
+                            <a href="#" class="viewDetailsHomeworld" data-url="<?= $character->homeworld; ?>" title="Maiores Informações">
+                                <i class="fas fa-search"></i>
                             </a>
                         </td>
                     </tr>
@@ -61,8 +76,8 @@
                 <p>Modal body text goes here.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary">OK</button>
             </div>
             </div>
         </div>
