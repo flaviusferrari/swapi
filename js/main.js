@@ -9,7 +9,8 @@ $(document).ready(function() {
             data: {
                 url: $(this).attr('data-url')
             },
-            success: function( data ) {                    
+            success: function( data ) {    
+                $('.modal-title').html('Detalhes do Planeta');
                 $('.modal-body').html(data);                
                 $('.modal').modal('show');
             }
