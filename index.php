@@ -13,11 +13,8 @@
 <body>
     <?php
         include("./class/swapi-class.php");
-
         $sw = new swapi();
-
         $sw->resource = 'people';
-
         $list = $sw->getDataApi();
     ?>
     <div class="container">
@@ -38,7 +35,7 @@
         </form>
         <!-- LISTAGEM -->
         <div id="listCharacters">
-            <?php include('./includes/listCharacters.php'); ?>
+            <?php include('./includes/listCharacters.php'); ?>            
         </div>
     </div>
 

@@ -21,3 +21,8 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+<?php
+include("./class/pagination-class.php");
+$pg = new pagination($list);
+echo $pg->viewPagination(); 
+?>
