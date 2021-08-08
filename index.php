@@ -18,7 +18,7 @@
 
         $sw->resource = 'people';
 
-        $swCharacters = $sw->getDataApi();
+        $list = $sw->getDataApi();
     ?>
     <div class="container">
         <h1>Star Wars Characters</h1>
@@ -37,29 +37,7 @@
             </div>
         </form>
 
-        <table class="table table-striped table-bordered">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Personagem</th>
-                    <th>Genero</th>
-                    <th>Planeta Natal</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach($swCharacters->results as $character): ?>                    
-                    <tr>
-                        <td><?= $character->name; ?></td>
-                        <td><?= $character->gender; ?></td>
-                        <td>
-                            <?= $sw->getDataResource($character->homeworld, 'planets', 'name'); ?>
-                            <a href="#" class="viewDetailsHomeworld" data-url="<?= $character->homeworld; ?>" title="Maiores Informações">
-                                <i class="fas fa-search"></i>
-                            </a>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+        <?php include('./includes/listCharacters.php'); ?>
     </div>
 
     <!-- MODAL -->
