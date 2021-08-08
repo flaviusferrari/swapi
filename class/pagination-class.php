@@ -7,10 +7,23 @@ class pagination
 
     public function __construct($list)   
     {
+        $regPerPage = 10;        
+
         $this->pag = $this->initPagination();
         $this->pag .= $this->setPrevious($list->previous);
-        $this->pag .= '<li class="page-item"><a class="page-link" href="#">1</a></li>';
-        $this->pag .= '<li class="page-item"><a class="page-link" href="#">2</a></li>';
+
+        if(isset($list->count)) {
+            $contador = 0;
+            $page = 1;
+            while($contador < $list->count)
+            {
+                $this->pag .= $this->setItem('https://swapi.dev/api/people/?page='.$page, $page);
+                $contador = $contador + $regPerPage;
+                $page++;
+            } 
+        } else {
+            $this->pag .= $this->setItem();
+        }
         $this->pag .= $this->setNext($list->next);
         $this->pag .= $this->endPagination() ;
     }
@@ -29,16 +42,42 @@ class pagination
 
     private function setPrevious($prev)
     {
-        $txtPrev = '<li class="page-item"><a class="page-link" href="'.$prev.'">Previous</a></li>';
+        $disabled = '';
+        if (empty($prev))
+        {
+            $prev = '#';
+            $disabled = 'disabled';
+        }
+
+        $txtPrev = '<li class="page-item '.$disabled.'"><a class="page-link" href="'.$prev.'">Previous</a></li>';
         return $txtPrev;
     }
 
     private function setNext($next)
     {
-        $txtNext = '<li class="page-item"><a class="page-link" href="'.$next.'">Next</a></li>';
+        $disabled = '';
+        if (empty($next))
+        {
+            $next = '#';
+            $disabled = 'disabled';
+        }
+
+        $txtNext = '<li class="page-item '.$disabled.'"><a class="page-link" href="'.$next.'">Next</a></li>';
         return $txtNext;
     }
 
+    private function setItem($item = null, $page = '1')
+    {
+        $disabled = '';
+        if (empty($item))
+        {
+            $item = '#';
+            $disabled = 'disabled';
+        }
+
+        $txtItem = '<li class="page-item '.$disabled.'"><a class="page-link" href="'.$item.'">'.$page.'</a></li>';
+        return $txtItem;
+    }
 
     public function viewPagination()
     {
