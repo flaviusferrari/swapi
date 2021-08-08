@@ -36,7 +36,26 @@ $(document).ready(function() {
                 $('#listCharacters').html(data);
             }
         });
-    })
+    });
+
+    /**
+     * 
+     */
+     $('#listCharacters').on('click', '.page-link', function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: "http://localhost/swapi/searchCharacter.php",
+            type: 'post',
+            data: {
+                page: $(this).attr('href')
+            },
+            success: function( data ) {                    
+                $('#listCharacters').html(data);
+            }
+        });
+
+    });
 
 
 });
