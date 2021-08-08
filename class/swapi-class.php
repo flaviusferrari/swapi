@@ -7,7 +7,9 @@ class swapi
     private $schema = '';
 
     /**
-     * MÉTDO
+     * MÉTODO GET DATA RESOURCE
+     * 
+     *  - 
      */
     public function getDataResource($url, $resource, $field = null)
     {
@@ -19,7 +21,7 @@ class swapi
         $this->resource = $resource;
         $this->schema = '/' . $st;
 
-         // Busca os dados do Recurso
+        // Busca os dados do Recurso
         $data = $this->getDataApi();
 
         // Verifica se foi enviado algum campo
@@ -28,6 +30,22 @@ class swapi
         } else {
             return $data;
         }
+    }
+
+    /**
+     * MÉTODO SEARCH RESOURCE
+     * 
+     *  - Busca pelo recurso desejado
+     */
+    public function searchResource($search)
+    {
+        $this->schema = '/?search='.$search;
+
+        $url = $this->base_url . $this->resource . $this->schema;
+
+        $data = $this->getDataApi();
+
+        return $data;
     }
 
     /**
