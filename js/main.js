@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    $('.viewDetailsHomeworld').click(function(e) {
+    $('#listCharacters').on('click', '.viewDetailsHomeworld', function(e) {
         e.preventDefault();
 
         $.ajax({
@@ -17,6 +17,12 @@ $(document).ready(function() {
 
     });
 
+    /**
+     * Busca dos personagens
+     * 
+     *  - Efetua a busca do personagem de acordo com o nome digitado no formulário.
+     *  - Retorna um arquivo HTML que irá substituir a lista atual.
+     */
     $('form').submit(function(e) {
         e.preventDefault();
 
@@ -27,8 +33,7 @@ $(document).ready(function() {
                 person: $('#person').val()
             },
             success: function( data ) {                    
-                $('.modal-body').html(data);                
-                $('.modal').modal('show');
+                $('#listCharacters').html(data);
             }
         });
     })
